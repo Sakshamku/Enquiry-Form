@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+# Smart Enquiry Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional MERN stack portfolio project for managing enquiries with a modern dashboard-style React frontend and a Node/Express/MongoDB backend.
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+This repository includes:
 
-### `npm start`
+- **Frontend:** React, React Bootstrap, Axios, React Router DOM, React Toastify
+- **Backend:** Node.js, Express.js, MongoDB, Mongoose
+- **Architecture:** MVC-style backend, reusable frontend components, API service layer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Controlled enquiry form with inline validation
+- Create, read, update, delete enquiries via backend APIs
+- Search by name, email, or phone number
+- Pagination with 5 records per page
+- Toast notifications for success and errors
+- Delete confirmation and loading states
+- Responsive, dashboard-inspired UI
 
-### `npm test`
+## Folder Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+/enquiryform
+  /server
+    config/db.js
+    controllers/enquiryController.js
+    middleware/errorMiddleware.js
+    models/Enquiry.js
+    routes/enquiryRoutes.js
+    server.js
+  /src
+    /components
+      EnquiryForm.jsx
+      EnquiryTable.jsx
+      Loader.jsx
+      Message.jsx
+      PaginationControls.jsx
+    /pages
+      EnquiryPage.jsx
+    /services/api
+      enquiryService.js
+    App.css
+    App.js
+    index.js
+  .env.example
+  package.json
+  README.md
+```
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```powershell
+cd d:\RaectProject\enquiryform
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend
 
-### `npm run eject`
+```powershell
+cd d:\RaectProject\enquiryform\server
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Environment Variables
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Copy `.env.example` to `.env` in the root folder and update the MongoDB connection string.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/enquirydb?retryWrites=true&w=majority
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Running the Application
 
-## Learn More
+### Start the backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```powershell
+cd d:\RaectProject\enquiryform\server
+npm run dev
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Start the frontend
 
-### Code Splitting
+```powershell
+cd d:\RaectProject\enquiryform
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Open the frontend at http://localhost:3000 and the backend at http://localhost:5000.
 
-### Analyzing the Bundle Size
+## API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+| Method | Endpoint | Description |
+| ------ | -------- | ----------- |
+| GET | `/api/enquiries` | List enquiries with optional `search` and `page` query params |
+| POST | `/api/enquiries` | Create a new enquiry |
+| PUT | `/api/enquiries/:id` | Update an existing enquiry |
+| DELETE | `/api/enquiries/:id` | Delete an enquiry |
 
-### Making a Progressive Web App
+### Example API request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```http
+GET /api/enquiries?search=john&page=2
+```
 
-### Advanced Configuration
+## Backend Summary
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `server/config/db.js` connects to MongoDB
+- `server/models/Enquiry.js` defines the enquiry schema and validation
+- `server/controllers/enquiryController.js` contains the CRUD API logic
+- `server/routes/enquiryRoutes.js` defines the API endpoints
+- `server/middleware/errorMiddleware.js` handles errors centrally
+- `server/server.js` starts the Express app
 
-### Deployment
+## Frontend Summary
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- `src/pages/EnquiryPage.jsx` is the main management page
+- `src/components/EnquiryForm.jsx` handles the enquiry form UI and validation
+- `src/components/EnquiryTable.jsx` lists enquiries and exposes edit/delete actions
+- `src/components/PaginationControls.jsx` controls page navigation
+- `src/components/Loader.jsx` shows the loading state
+- `src/components/Message.jsx` displays alerts for errors or empty states
+- `src/services/api/enquiryService.js` makes Axios calls to backend APIs
 
-### `npm run build` fails to minify
+## Deployment Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Build the frontend using `npm run build`
+- Host the backend with Node.js/Express and connect to MongoDB Atlas
+- Use the `proxy` setting for local development and configure CORS for production
+
+## Resume-ready Description
+
+**Smart Enquiry Management System** is a full-stack MERN application designed for interview-ready portfolios.
+It demonstrates professional architecture, REST API integration, controlled React forms with validation, server-side data persistence, and polished UX.

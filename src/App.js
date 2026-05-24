@@ -1,12 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
-import EnquiryForm from './enquiryform';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import EnquiryPage from './pages/EnquiryPage';
 
 function App() {
   return (
-    <div className="App">
-      <EnquiryForm/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/*" element={<EnquiryPage />} />
+      </Routes>
+    </Router>
   );
 }
 

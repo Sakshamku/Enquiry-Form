@@ -1,40 +1,67 @@
 .App {
   text-align: center;
-  color: #1557d0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.enquiry-page {
+  min-height: calc(100vh - 40px);
+  padding-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.section-title {
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  letter-spacing: -0.03em;
 }
 
-.App-header {
-  background-color: #385b9a;
-  min-height: 100vh;
+.enquiry-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 1rem;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.enquiry-card:hover {
+  transform: translateY(-2px);
+}
+
+.search-input .form-control {
+  min-width: 320px;
+}
+
+.enquiry-table tbody tr:hover {
+  background: rgba(13, 110, 253, 0.08);
+}
+
+.table-actions button {
+  margin-right: 0.5rem;
+}
+
+.table-actions button:last-child {
+  margin-right: 0;
+}
+
+.page-badge {
+  min-width: 122px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.pagination-controls {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
+}
+
+.loader-container {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(86, 64, 64);
+  align-items: center;
+  min-height: 260px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (max-width: 767px) {
+  .search-input .form-control {
+    min-width: 100%;
   }
 }
 
